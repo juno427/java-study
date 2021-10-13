@@ -2,7 +2,7 @@ package application;
 
 import java.util.Scanner;
 
-public class IfElseifElse {
+public class IfElse {
 
 	public static void main(String[] args) {
 		// IF 문
@@ -19,10 +19,13 @@ public class IfElseifElse {
 		if(apples > bananas) {
 			System.out.println("사과가 바나나보다 많음");
 		}
-
-		else { //같을 경우
-			System.out.println("바나나가 사과보다 많거나 같음");
+		else if(apples < bananas) {	//if문의 조건이 false일 때 실행
+			System.out.println("바나나가 사과보다 많음");
 		}
+		else{ //같을 경우
+			System.out.println("갯수가 같음");
+		}
+		System.out.println("프로그램 종료.");
 
 	}
 
