@@ -1,6 +1,6 @@
 package exam2;
 
-public class Practice_4 {
+public class Practice_exam_1 {
 
 	public static void main(String[] args) {
 		// 1. 이름을 출력하시오.

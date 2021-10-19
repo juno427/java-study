@@ -1,6 +1,6 @@
 package exam2;
 
-public class Practice_5 {
+public class Practice_exam_2 {
 
 	public static void main(String[] args) {
 		// 1. 변수 생성		
