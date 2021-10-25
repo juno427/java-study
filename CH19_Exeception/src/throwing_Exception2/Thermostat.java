@@ -6,7 +6,7 @@ public class Thermostat {
 
 		setMachineTemperature(temperature);
 
-		System.out.println("온도 세팅 : " + temperature); //
+		System.out.println("온도 세팅 : " + temperature); // 온도가 정상일 경우 출력
 	}
 
 	private void setMachineTemperature(double temperature) throws Exception {
