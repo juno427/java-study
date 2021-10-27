@@ -5,13 +5,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JPanel;
+
 import model.World;
 
 public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private final static int CELLSIZE = 50; // 격자의 크기설정
+	private final static int CELLSIZE = 30;// 격자의 크기설정
 	private final static Color backgroundColor = Color.BLACK; // 배경색 검은색
 	private final static Color gridColor = Color.GRAY; // 격자선색 회색
 
@@ -20,7 +22,7 @@ public class GamePanel extends JPanel {
 	private World world; // 월드 선언
 
 	public GamePanel() {
-		// 게임패널을 생성 시에 이벤트중(마우스 이벤트 추가)
+		// 게임패널을 생성시에 이벤트중(마우스 이벤트 추가)
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 
@@ -31,6 +33,9 @@ public class GamePanel extends JPanel {
 				int row = (e.getY() - topBottomMargin) / CELLSIZE;
 				int col = (e.getX() - leftRightMargin) / CELLSIZE;
 
+				if (row >= world.getRows() || col >= world.getColumns()) {
+					return; // 벗어난 값이기 때문에 그냥 리턴(큰값)
+				}
 				boolean status = world.getCell(row, col);
 				world.setCell(row, col, !status); // 현재 녹색인지 체크해서 반전
 				repaint(); // 새로고침(게임패널을 새로시작)
@@ -50,13 +55,17 @@ public class GamePanel extends JPanel {
 		topBottomMargin = ((height % CELLSIZE) + CELLSIZE) / 2;
 
 		int rows = (height - 2 * topBottomMargin) / CELLSIZE;
-		int cols = (width - 2 * topBottomMargin) / CELLSIZE;
+		int cols = (width - 2 * leftRightMargin) / CELLSIZE;
 
 //		System.out.println(rows);
 //		System.out.println(cols);
 
 		if (world == null) { // 아직 world가 생성되지 않았으면 새로 생성
 			world = new World(rows, cols);
+		} else { // 이미 월드 객체가 만들어져 있다면
+			if (world.getRows() != rows || world.getColumns() != cols) {
+				world = new World(rows, cols); // 새로 만듬(리사이즈)
+			}
 		}
 
 		// world.setCell(0, 0, true); // grid 이중배열에 좌표(줄,열) 값을 true로 set
@@ -99,6 +108,28 @@ public class GamePanel extends JPanel {
 			// 줄을 긋는 메소드 (x1,y1) (x2,y2)
 			g2.drawLine(leftRightMargin, y, width - leftRightMargin, y);
 		}
+
+	}
+
+	public void randomize() {
+		// 엔터키를 눌렀을때. => 랜덤으로 그리드 생성
+		world.randomize();
+		// 리프레쉬
+		repaint();
+	}
+
+	public void clear() {
+		// 벡스페이스를 눌렀을때 => 모든 셀을 false로 검은색
+		world.clear();
+		// 리프레쉬
+		repaint();
+	}
+
+	public void next() {
+		// 스페이스바를 눌렀을때 => 주변 그리드 Active
+		world.next();
+		// 리프레쉬
+		repaint();
 
 	}
 

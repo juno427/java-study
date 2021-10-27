@@ -10,7 +10,6 @@ public class App {
 		// 프로그램 시작
 		SwingUtilities.invokeLater(new Runnable() {
 
-			@Override
 			public void run() {
 				new MainFrame();
 
