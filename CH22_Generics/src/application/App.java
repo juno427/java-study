@@ -7,6 +7,7 @@ import heirarchy.Creature;
 public class App {
 
 	public static void main(String[] args) {
+		// 제네릭 타입 클래스는 객체를 만들 때 타입을 지정한다.
 		Wrapper<Cat> wrapper = new Wrapper<>(); // 포장 클래스의 객체를 만듬
 		Wrapper<Creature> wrapper2 = new Wrapper<>();
 		
