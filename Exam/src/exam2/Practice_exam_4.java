@@ -3,13 +3,15 @@ package exam2;
 public class Practice_exam_4 {
 
 	public static void main(String[] args) {
-		// 1. ÀÔ·Â°ª ´ëÀÔ
-		int x = 8000; // ±âº» ½Ã±Ş
-		int y = 160; // ÀÏÇÑ ½Ã°£ 
+		// 1. ì…ë ¥ê°’ ëŒ€ì…
+		int x = 8000; // ê¸°ë³¸ ì‹œê¸‰
+		int y = 160; // ì¼í•œ ì‹œê°„ 
 		
-		// 2. ¿ù±Ş °è»ê
-		System.out.println(x*y); // ÃÑ ±Ş¿©
-		// 3. Ãâ·Â
+		// 2. ì›”ê¸‰ ê³„ì‚°
+		System.out.println(x*y); // ê¸°ë³¸ ì‹œê¸‰* ì¼í•œ ì‹œê°„
+		
+		// 3. ì¶œë ¥
+		System.out.println(x*y);
 
 	}
 
